@@ -21,5 +21,7 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/rajkumar.j/Downloads/util-bridges-6.2.1.jar"/>
 	<classpathentry kind="lib" path="D:/rajkumar/MML/util-java-6.0.2.jar"/>
+	<classpathentry kind="lib" path="D:/rajkumar/softwares/liferay/liferay-portal-6.2-ce-ga2/tomcat-7.0.42/webapps/library-portlet/WEB-INF/lib/jstl-api.jar"/>
+	<classpathentry kind="lib" path="D:/rajkumar/softwares/liferay/liferay-portal-6.2-ce-ga2/tomcat-7.0.42/webapps/library-portlet/WEB-INF/lib/jstl-impl.jar"/>
 	<classpathentry kind="output" path="docroot/WEB-INF/classes"/>
 </classpath>

@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
-
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <portlet:defineObjects />
 <%@page import="javax.portlet.PortletURL" %>
 <%@page import="javax.portlet.ActionRequest" %>

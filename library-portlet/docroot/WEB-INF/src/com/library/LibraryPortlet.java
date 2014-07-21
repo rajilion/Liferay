@@ -9,6 +9,8 @@ import javax.portlet.PortletException;
 import javax.portlet.PortletRequest;
 import javax.portlet.PortletURL;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.theme.ThemeDisplay;
@@ -56,6 +58,23 @@ public class LibraryPortlet extends MVCPortlet {
 		actionResponse.sendRedirect(successPageURL.toString());
 	}
 
-	
+	public void deleteBook(ActionRequest actionRequest, ActionResponse actionResponse) throws IOException,PortletException
+	{
+		long bookId = ParamUtil.getLong(actionRequest, "bookId");
+		if(bookId>1)
+		{
+			try {
+				LMSBookLocalServiceUtil.deleteLMSBook(bookId);
+			} catch (PortalException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SystemException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		String redirectURL = ParamUtil.getString(actionRequest, "redirectURL");
+		actionResponse.sendRedirect(redirectURL);
+	}
 
 }

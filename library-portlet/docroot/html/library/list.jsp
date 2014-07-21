@@ -20,7 +20,13 @@
 <%
 PortletURL iteratorURL = renderResponse.createRenderURL();
 iteratorURL.setParameter("jspPage", LibraryConstants.PAGE_LIST);
+PortletURL deleteBookURL = 	renderResponse.createActionURL();
+deleteBookURL.setParameter(ActionRequest.ACTION_NAME, LibraryConstants.ACTION_DELETE_BOOK);
+
+deleteBookURL.setParameter("redirectURL", iteratorURL.toString());
 %>
+
+
 <!-- old code -->
 <!-- <table border="1"; width="80%"> -->
 <!-- <tr> -->
@@ -44,12 +50,16 @@ iteratorURL.setParameter("jspPage", LibraryConstants.PAGE_LIST);
 <%-- %> --%>
 
 <!-- </table> -->
+
 <liferay-ui:search-container delta="4" emptyResultsMessage="Sorry No data found" iteratorURL="<%=iteratorURL %>">
 <liferay-ui:search-container-results total="<%=books.size() %>" results="<%=ListUtil.subList(books, searchContainer.getStart(), searchContainer.getEnd()) %>"/>
 <liferay-ui:search-container-row modelVar="book" className="LMSBook">
 <liferay-ui:search-container-column-text name="Book Title" property ="bookTitle"></liferay-ui:search-container-column-text>
 <liferay-ui:search-container-column-text name="Author" property ="author"></liferay-ui:search-container-column-text>
-<liferay-ui:search-container-column-text name="Date Added" property ="createDate"></liferay-ui:search-container-column-text>
+<liferay-ui:search-container-column-text name="Date Added" ><fmt:formatDate value ="<%=book.getCreateDate() %>" pattern="dd/MMM/yyyy"/> </liferay-ui:search-container-column-text>
+<%deleteBookURL.setParameter("bookId", Long.toString(book.getBookId())); %>
+
+<liferay-ui:search-container-column-text name="Delete" href="<%=deleteBookURL.toString() %>" value="delete"></liferay-ui:search-container-column-text>
 </liferay-ui:search-container-row>
 
 <liferay-ui:search-iterator searchContainer="<%=searchContainer %>"></liferay-ui:search-iterator>
